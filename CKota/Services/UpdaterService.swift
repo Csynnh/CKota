@@ -73,7 +73,7 @@ final class UpdaterService: NSObject {
 extension UpdaterService: SPUUpdaterDelegate {
     nonisolated func feedURLString(for _: SPUUpdater) -> String? {
         // Use GitHub releases for appcast
-        "https://github.com/synh/CKota/releases/latest/download/appcast.xml"
+        "https://github.com/Csynnh/CKota/releases/latest/download/appcast.xml"
     }
 
     nonisolated func updaterDidFinishUpdateCycleForUpdateCheck(_: SPUUpdater) throws {
