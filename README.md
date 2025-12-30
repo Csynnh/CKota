@@ -1,130 +1,97 @@
-# Quotio
+# CKota
 
-![Quotio Banner](screenshots/menu_bar.png)
+<p align="center">
+  <img src="screenshots/home.png" width="600" alt="CKota Home" />
+</p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/platform-macOS-lightgrey.svg?style=flat" alt="Platform macOS" />
-  <img src="https://img.shields.io/badge/language-Swift-orange.svg?style=flat" alt="Language Swift" />
+  <img src="https://img.shields.io/badge/Swift_6-F05138.svg?style=flat" alt="Swift 6" />
   <img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat" alt="License MIT" />
   <a href="README.vi.md"><img src="https://img.shields.io/badge/lang-Tiếng%20Việt-red.svg?style=flat" alt="Vietnamese" /></a>
 </p>
 
-<p align="center">
-  <strong>The ultimate command center for your AI coding assistants on macOS.</strong>
-</p>
+A macOS menu bar app for managing AI coding assistant accounts. It wraps [CLIProxyAPI](https://github.com/synh/CLIProxyAPI) - a local proxy that routes requests across multiple provider accounts.
 
-Quotio is a native macOS application for managing **CLIProxyAPI** - a local proxy server that powers your AI coding agents. It helps you manage multiple AI accounts, track quotas, and configure CLI tools in one place.
+Track quotas across Claude Code, Antigravity, Gemini, Codex, Copilot, and more. See which accounts are ready, cooling, or exhausted at a glance.
 
-## ✨ Features
+**v0.2.2** | macOS 15.0+ | [Docs](./docs/)
 
-- **🔌 Multi-Provider Support**: Connect accounts from Gemini, Claude, OpenAI Codex, Qwen, Vertex AI, iFlow, Antigravity, Kiro, and GitHub Copilot via OAuth or API keys.
-- **🚀 One-Click Agent Configuration**: Auto-detect and configure AI coding tools like Claude Code, OpenCode, Gemini CLI, and more.
-- **📊 Real-time Dashboard**: Monitor request traffic, token usage, and success rates live.
-- **📉 Smart Quota Management**: Visual quota tracking per account with automatic failover strategies (Round Robin / Fill First).
-- **🔑 API Key Management**: Generate and manage API keys for your local proxy.
-- **🖥️ Menu Bar Integration**: Quick access to server status, quota overview, and custom provider icons from your menu bar.
-- **🔔 Notifications**: Alerts for low quotas, account cooling periods, or service issues.
-- **🔄 Auto-Update**: Built-in Sparkle updater for seamless updates.
-- **🌍 Bilingual**: English and Vietnamese support.
+## Install
 
-## 📸 Screenshots
+Download the [latest release](https://github.com/synh/CKota/releases) or build from source:
 
-| Dashboard | Providers |
-|:---:|:---:|
-| ![Dashboard](screenshots/dashboard.png) | ![Providers](screenshots/providers.png) |
-| **Agent Setup** | **Quota Monitoring** |
-| ![Agent Setup](screenshots/agent_setup.png) | ![Quota Monitoring](screenshots/quota.png) |
-| **Menu Bar** | |
-| ![Menu Bar](screenshots/menu_bar.png) | |
+```bash
+git clone https://github.com/synh/CKota.git
+cd CKota && open CKota.xcodeproj
+# Cmd + R to build and run
+```
 
-## 🤖 Supported Ecosystem
+The proxy binary downloads automatically on first launch.
 
-### AI Providers
-| Provider | Auth Method |
-|----------|-------------|
-| Google Gemini | OAuth |
-| Anthropic Claude | OAuth |
-| OpenAI Codex | OAuth |
-| Qwen Code | OAuth |
-| Vertex AI | Service Account JSON |
-| iFlow | OAuth |
-| Antigravity | OAuth |
-| Kiro | OAuth |
-| GitHub Copilot | OAuth |
+## Screenshots
 
-### Compatible CLI Agents
-Quotio can automatically configure these tools to use your centralized proxy:
-- Claude Code
-- Codex CLI
-- Gemini CLI
-- Amp CLI
-- OpenCode
-- Factory Droid
+| Home | Analytics |
+|------|-----------|
+| ![Home](screenshots/home.png) | ![Analytics](screenshots/analytics.png) |
 
-## 🚀 Installation
+| Accounts | Settings |
+|----------|----------|
+| ![Accounts](screenshots/accounts.png) | ![Settings](screenshots/settings.png) |
 
-### Requirements
-- macOS 15.0 (Sequoia) or later
-- Internet connection for OAuth authentication
+## What it does
 
-### Download
-Download the latest `.dmg` from the [Releases](https://github.com/nguyenphutrong/quotio/releases) page.
+**Two modes:**
+- **Full Mode** - Runs the proxy server, manages accounts, configures CLI agents
+- **Quota Monitor** - Just tracks quota usage without running the proxy (lightweight)
 
-> ⚠️ **Note**: The app is not signed with an Apple Developer certificate yet. If macOS blocks the app, run:
-> ```bash
-> xattr -cr /Applications/Quotio.app
-> ```
+**Account management:**
+- OAuth login for supported providers (Claude, Antigravity, etc.)
+- Status indicators: Ready (green), Cooling (orange), Exhausted (red)
+- Per-account quota breakdown with time until reset
 
-### Building from Source
+**Menu bar:**
+- Quick view of your lowest quota accounts
+- Colored or monochrome icons based on preference
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/nguyenphutrong/quotio.git
-   cd Quotio
-   ```
+## Providers
 
-2. **Open in Xcode:**
-   ```bash
-   open Quotio.xcodeproj
-   ```
+Claude Code, Antigravity
 
-3. **Build and Run:**
-   - Select the "Quotio" scheme
-   - Press `Cmd + R` to build and run
+## Usage
 
-> The app will automatically download the `CLIProxyAPI` binary on first launch.
+1. Launch CKota, pick Full Mode or Quota Monitor
+2. Go to **Accounts** and add your provider accounts via OAuth
+3. Check **Analytics** for detailed quota breakdowns per account
+4. The menu bar shows your top accounts at a glance
 
-## 📖 Usage
+Settings let you configure language (EN/VI), appearance, launch at login, and notification preferences.
 
-### 1. Start the Server
-Launch Quotio and click **Start** on the dashboard to initialize the local proxy server.
+## Architecture
 
-### 2. Connect Accounts
-Go to **Providers** tab → Click on a provider → Authenticate via OAuth or import credentials.
+SwiftUI + MVVM with async/await. The app talks to CLIProxyAPI via REST for account management and quota fetching.
 
-### 3. Configure Agents
-Go to **Agents** tab → Select an installed agent → Click **Configure** → Choose Automatic or Manual mode.
+```
+Views → ViewModels (@Observable) → Services → CLIProxyAPI
+```
 
-### 4. Monitor Usage
-- **Dashboard**: Overall health and traffic
-- **Quota**: Per-account usage breakdown
-- **Logs**: Raw request/response logs for debugging
+Key files:
+- `CKotaApp.swift` - Entry point, menu bar setup
+- `ViewModels/QuotaViewModel.swift` - Central state
+- `Services/CLIProxyManager.swift` - Proxy lifecycle
+- `Services/*QuotaFetcher.swift` - Provider-specific quota APIs
 
-## ⚙️ Settings
+## Docs
 
-- **Port**: Change the proxy listening port
-- **Routing Strategy**: Round Robin or Fill First
-- **Auto-start**: Launch proxy automatically when Quotio opens
-- **Notifications**: Toggle alerts for various events
+- [Project Overview](docs/project-overview-pdr.md)
+- [Code Standards](docs/code-standards.md)
+- [System Architecture](docs/system-architecture.md)
+- [Codebase Summary](docs/codebase-summary.md)
 
-## 🤝 Contributing
+## Contributing
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/amazing-feature`)
-3. Commit your Changes (`git commit -m 'Add amazing feature'`)
-4. Push to the Branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+Fork, branch, PR. Follow the [code standards](docs/code-standards.md). See [CLAUDE.md](CLAUDE.md) for dev workflow.
 
-## 📄 License
+## License
 
-MIT License. See `LICENSE` for details.
+MIT
