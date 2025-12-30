@@ -4,7 +4,7 @@
 <dict>
     <!-- Sparkle Auto-Update Configuration -->
     <key>SUFeedURL</key>
-    <string>https://github.com/synh/CKota/releases/latest/download/appcast.xml</string>
+    <string>https://github.com/Csynnh/CKota/releases/latest/download/appcast.xml</string>
 
     <key>SUPublicEDKey</key>
     <string>yQZqph3IcNyPfdMtstMEP1dmID9bCWcOVSAGKMutQjs=</string>
