@@ -131,8 +131,8 @@ extension CKKPICard {
             label: "Tokens",
             value: "2.5M",
             subtitle: "processed",
-            iconBackgroundColor: Color.purple.opacity(0.1),
-            iconColor: .purple
+            iconBackgroundColor: Color.ckAccentLight,
+            iconColor: .ckAccent
         )
 
         CKKPICard(
