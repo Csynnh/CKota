@@ -11,18 +11,18 @@
   <a href="README.vi.md"><img src="https://img.shields.io/badge/lang-Tiếng%20Việt-red.svg?style=flat" alt="Vietnamese" /></a>
 </p>
 
-A macOS menu bar app for managing AI coding assistant accounts. It wraps [CLIProxyAPI](https://github.com/synh/CLIProxyAPI) - a local proxy that routes requests across multiple provider accounts.
+A macOS menu bar app for managing AI coding assistant accounts. It wraps [CLIProxyAPI](https://github.com/Csynnh/CLIProxyAPI) - a local proxy that routes requests across multiple provider accounts.
 
 Track quotas across Claude Code, Antigravity, Gemini, Codex, Copilot, and more. See which accounts are ready, cooling, or exhausted at a glance.
 
-**v0.2.2** | macOS 15.0+ | [Docs](./docs/)
+**v0.2.2** | macOS 15.0+
 
 ## Install
 
-Download the [latest release](https://github.com/synh/CKota/releases) or build from source:
+Download the [latest release](https://github.com/Csynnh/CKota/releases) or build from source:
 
 ```bash
-git clone https://github.com/synh/CKota.git
+git clone https://github.com/Csynnh/CKota.git
 cd CKota && open CKota.xcodeproj
 # Cmd + R to build and run
 ```
@@ -85,16 +85,9 @@ Key files:
 - `Services/CLIProxyManager.swift` - Proxy lifecycle
 - `Services/*QuotaFetcher.swift` - Provider-specific quota APIs
 
-## Docs
-
-- [Project Overview](docs/project-overview-pdr.md)
-- [Code Standards](docs/code-standards.md)
-- [System Architecture](docs/system-architecture.md)
-- [Codebase Summary](docs/codebase-summary.md)
-
 ## Contributing
 
-Fork, branch, PR. Follow the [code standards](docs/code-standards.md). See [CLAUDE.md](CLAUDE.md) for dev workflow.
+Fork, branch, PR.
 
 ## License
 
