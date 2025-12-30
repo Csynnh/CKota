@@ -11,18 +11,18 @@
   <a href="README.md"><img src="https://img.shields.io/badge/lang-English-blue.svg?style=flat" alt="English" /></a>
 </p>
 
-Ứng dụng menu bar macOS để quản lý tài khoản AI coding. CKota bọc [CLIProxyAPI](https://github.com/synh/CLIProxyAPI) - proxy cục bộ phân phối request qua nhiều tài khoản provider.
+Ứng dụng menu bar macOS để quản lý tài khoản AI coding. CKota bọc [CLIProxyAPI](https://github.com/Csynnh/CLIProxyAPI) - proxy cục bộ phân phối request qua nhiều tài khoản provider.
 
 Theo dõi quota của Claude Code, Antigravity, Gemini, Codex, Copilot và nhiều hơn nữa. Xem ngay tài khoản nào sẵn sàng, đang nghỉ, hay đã hết quota.
 
-**v0.2.2** | macOS 15.0+ | [Tài liệu](./docs/)
+**v0.2.2** | macOS 15.0+
 
 ## Cài đặt
 
-Tải [bản release mới nhất](https://github.com/synh/CKota/releases) hoặc build từ source:
+Tải [bản release mới nhất](https://github.com/Csynnh/CKota/releases) hoặc build từ source:
 
 ```bash
-git clone https://github.com/synh/CKota.git
+git clone https://github.com/Csynnh/CKota.git
 cd CKota && open CKota.xcodeproj
 # Cmd + R để build và chạy
 ```
@@ -85,16 +85,9 @@ File quan trọng:
 - `Services/CLIProxyManager.swift` - Quản lý vòng đời proxy
 - `Services/*QuotaFetcher.swift` - API quota theo provider
 
-## Tài liệu
-
-- [Tổng quan dự án](docs/project-overview-pdr.md)
-- [Quy chuẩn code](docs/code-standards.md)
-- [Kiến trúc hệ thống](docs/system-architecture.md)
-- [Tóm tắt codebase](docs/codebase-summary.md)
-
 ## Đóng góp
 
-Fork, tạo nhánh, PR. Tuân thủ [quy chuẩn code](docs/code-standards.md). Xem [CLAUDE.md](CLAUDE.md) cho quy trình phát triển.
+Fork, tạo nhánh, PR.
 
 ## Giấy phép
 
