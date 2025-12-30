@@ -38,6 +38,7 @@ struct DashboardScreen: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: .ckXXL) {
+
                 if modeManager.isFullMode {
                     // Full Mode: Check binary and proxy status
                     if !viewModel.proxyManager.isBinaryInstalled {

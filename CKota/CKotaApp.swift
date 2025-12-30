@@ -152,7 +152,7 @@ struct CKotaApp: App {
                     }
                 }
         }
-        .defaultSize(width: 1000, height: 700)
+        .defaultSize(width: 1200, height: 840)
         .commands {
             CommandGroup(replacing: .newItem) {}
 
@@ -336,6 +336,18 @@ struct ContentView: View {
                 // Status section at bottom - different per mode
                 VStack(spacing: 0) {
                     Divider()
+
+                    // Sponsor buttons
+                    HStack(spacing: 10) {
+                        PoweredByButton()
+                        SponsorButton()
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 10)
+
+                    Divider()
+
                     Group {
                         if modeManager.isFullMode {
                             ProxyStatusRow(viewModel: viewModel)

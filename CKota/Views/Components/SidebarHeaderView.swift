@@ -58,6 +58,87 @@ struct SidebarHeaderView: View {
     }
 }
 
+// MARK: - Powered By Button
+
+struct PoweredByButton: View {
+    @Environment(\.openURL) private var openURL
+
+    var body: some View {
+        Button {
+            if let url = URL(string: "https://claudekit.cc/?ref=ELCA8NAZ") {
+                openURL(url)
+            }
+        } label: {
+            HStack(spacing: 6) {
+                Image(systemName: "sparkles")
+                    .font(.system(size: 12, weight: .semibold))
+                    .foregroundStyle(Color.ckAccent)
+
+                Text("Powered by ")
+                    .font(.system(size: 12, weight: .regular))
+                    .foregroundStyle(Color.ckMutedForeground)
+
+                Image("claudekit")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 14)
+            }
+            .lineLimit(1)
+            .padding(.horizontal, 12)
+            .padding(.vertical, 8)
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(Color.ckMuted)
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color.ckBorder, lineWidth: 0.5)
+            )
+        }
+        .buttonStyle(.plain)
+        .ckCursorPointer()
+        .help("Powered by ClaudeKit")
+    }
+}
+
+// MARK: - Sponsor Button
+
+struct SponsorButton: View {
+    @Environment(\.openURL) private var openURL
+    private let sponsorColor = Color(hex: "DB61A2") // GitHub sponsor pink
+
+    var body: some View {
+        Button {
+            if let url = URL(string: "https://github.com/sponsors/Csynnh") {
+                openURL(url)
+            }
+        } label: {
+            HStack(spacing: 6) {
+                Image(systemName: "heart.fill")
+                    .font(.system(size: 12))
+                    .foregroundStyle(sponsorColor)
+
+                Text("Sponsor")
+                    .font(.system(size: 12, weight: .semibold))
+                    .foregroundStyle(sponsorColor)
+            }
+            .padding(.horizontal, 12)
+            .padding(.vertical, 8)
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(sponsorColor.opacity(0.1))
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(sponsorColor.opacity(0.3), lineWidth: 0.5)
+            )
+        }
+        .buttonStyle(.plain)
+        .ckCursorPointer()
+        .help("Sponsor this project")
+    }
+}
+
 #Preview {
     SidebarHeaderView()
 }

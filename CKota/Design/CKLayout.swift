@@ -34,7 +34,7 @@ extension CGFloat {
 enum CKLayout {
     // MARK: Sidebar
 
-    static let sidebarWidth: CGFloat = 224
+    static let sidebarWidth: CGFloat = 448
 
     // MARK: Header/Footer
 
@@ -74,8 +74,8 @@ enum CKLayout {
 
 enum CKWindowSize {
     /// Main window default size
-    static let defaultWidth: CGFloat = 800
-    static let defaultHeight: CGFloat = 600
+    static let defaultWidth: CGFloat = 1200
+    static let defaultHeight: CGFloat = 840
 
     /// Minimum constraints
     static let minWidth: CGFloat = 680
