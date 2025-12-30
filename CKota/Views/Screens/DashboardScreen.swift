@@ -210,8 +210,8 @@ struct DashboardScreen: View {
                 label: "dashboard.trackedAccounts".localized(),
                 value: "\(viewModel.directAuthFiles.count)",
                 subtitle: "dashboard.accounts".localized(),
-                iconBackgroundColor: Color.ckGemini.opacity(0.15),
-                iconColor: .ckGemini
+                iconBackgroundColor: Color.ckAccentLight,
+                iconColor: .ckAccent
             )
 
             let providersCount = Set(viewModel.directAuthFiles.map(\.provider)).count
@@ -220,8 +220,8 @@ struct DashboardScreen: View {
                 label: "dashboard.providers".localized(),
                 value: "\(providersCount)",
                 subtitle: "dashboard.connected".localized(),
-                iconBackgroundColor: Color.ckSuccess.opacity(0.15),
-                iconColor: .ckSuccess
+                iconBackgroundColor: Color.ckAccentLight,
+                iconColor: .ckAccent
             )
 
             // Show lowest quota percentage
@@ -241,8 +241,8 @@ struct DashboardScreen: View {
                     label: "dashboard.lastRefresh".localized(),
                     value: lastRefresh.formatted(date: .omitted, time: .shortened),
                     subtitle: "dashboard.updated".localized(),
-                    iconBackgroundColor: Color.purple.opacity(0.15),
-                    iconColor: .purple
+                    iconBackgroundColor: Color.ckMuted,
+                    iconColor: .ckMutedForeground
                 )
             }
         }
@@ -543,8 +543,8 @@ struct DashboardScreen: View {
                 icon: "person.2.fill",
                 label: "ACCOUNTS",
                 value: "\(viewModel.totalAccounts)",
-                iconBackgroundColor: Color.ckGemini.opacity(0.15),
-                iconColor: .ckGemini
+                iconBackgroundColor: Color.ckAccentLight,
+                iconColor: .ckAccent
             )
 
             // SUCCESS (green value)

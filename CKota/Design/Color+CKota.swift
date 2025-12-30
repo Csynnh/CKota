@@ -24,13 +24,6 @@ extension Color {
 
     static let ckClaude = Color(hex: "D97706")
     static let ckAntigravity = Color(hex: "4D7CFF")
-    static let ckGemini = Color(hex: "4285F4")
-    static let ckCodex = Color(hex: "10B981")
-    static let ckCopilot = Color(hex: "6366F1")
-    static let ckQwen = Color(hex: "6366F1")
-    static let ckVertex = Color(hex: "EA4335")
-    static let ckKiro = Color(hex: "FF6B35")
-    static let ckCursor = Color(hex: "000000")
 
     // MARK: Hex Initializer
 

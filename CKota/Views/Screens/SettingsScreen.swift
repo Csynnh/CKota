@@ -1265,19 +1265,19 @@ struct AboutScreen: View {
                     FeatureBadge(
                         icon: "person.2.fill",
                         title: "about.multiAccount".localized(),
-                        color: .blue
+                        color: .ckAccent
                     )
 
                     FeatureBadge(
                         icon: "chart.bar.fill",
                         title: "about.quotaTracking".localized(),
-                        color: .green
+                        color: .ckAccent
                     )
 
                     FeatureBadge(
                         icon: "terminal.fill",
                         title: "about.agentConfig".localized(),
-                        color: .purple
+                        color: .ckAccent
                     )
                 }
                 .padding(.vertical, 8)
@@ -1295,6 +1295,7 @@ struct AboutScreen: View {
                         .frame(width: 200)
                     }
                     .buttonStyle(.bordered)
+                    .tint(Color.ckAccent)
                     .ckCursorPointer()
 
                     Link(destination: URL(string: "https://github.com/router-for-me/CLIProxyAPI")!) {
@@ -1305,6 +1306,7 @@ struct AboutScreen: View {
                         .frame(width: 200)
                     }
                     .buttonStyle(.bordered)
+                    .tint(Color.ckAccent)
                     .ckCursorPointer()
                 }
 
